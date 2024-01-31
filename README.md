@@ -14,15 +14,10 @@ terraform apply
 | Name   | Description                                          |
 |--------|------------------------------------------------------|
 | devbox  | A [devbox](https://github.com/jetpack-io/devbox) environment with vscode tunnels configured. |
-|---------|------------------------------------------------------|
 | devenv  | A [devenv](https://devenv.sh/) environment with vscode tunnels configured. |
-|---------|------------------------------------------------------|
 | flox    | A [flox](https://flox.dev/) environment with vscode tunnels configured.   |
-|---------|------------------------------------------------------|
 | nix     | A [nix](https://nixos.org/) environment with vscode tunnels configured.    |
-|---------|------------------------------------------------------|
 | pkgx    | A [pkgx](https://pkgx.sh/) environment with vscode tunnels configured.   |
-|---------|------------------------------------------------------|
 | default | A base environment with vscode tunnels configured.   |
 
 
