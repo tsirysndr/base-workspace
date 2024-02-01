@@ -50,7 +50,7 @@ docker exec -it base-workspace bash
 | workspace_name | Name of the workspace | `string`       | `base-workspace` |
 | user           | User to create        | `string`       | `coder`         |
 | context        | Context to use        | `string`       | `./pkgx`         |
-| volumes        | Volumes to mount      | `list(string)` | `{ base-workspace = "/home/coder" }`             |
+| volumes        | Volumes to mount      | `map(string)` | `{ base-workspace = "/home/coder" }`             |
 
 
 ## 📝 License
