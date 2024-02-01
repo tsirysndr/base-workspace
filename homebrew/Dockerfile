@@ -51,7 +51,7 @@ ENV BASH_ENV=/home/${USER}/.bashrc
 ARG PACKAGES
 
 RUN if [ -n "$PACKAGES" ]; then \
-  brew install ${PACKAGES};\
+  brew install ${PACKAGES}; exit 0;\
   fi
 
 ENTRYPOINT [ "code", "-v", "tunnel" ]
