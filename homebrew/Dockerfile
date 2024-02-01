@@ -14,33 +14,28 @@ RUN rm -f packages.microsoft.gpg
 RUN  apt-get install -y apt-transport-https \
   && apt-get update \
   && apt-get install -y \
-  code 
-
-RUN curl https://pkgx.sh | sh
+  code sudo
 
 ARG USER=coder
 ARG USER_ID=30033
 ARG GROUP_ID=30033
 
-RUN apt-get install -y sudo
+RUN apt-get install -y ruby git
 
 RUN addgroup --gid $GROUP_ID ${USER} \
   && useradd --groups sudo --no-create-home --shell /bin/bash ${USER} --uid ${USER_ID} --gid ${GROUP_ID} \
   && echo "${USER} ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/${USER} \
   && chmod 0440 /etc/sudoers.d/${USER}
-
 RUN mkdir -p /home/${USER} && chown -R ${USER}:${USER} /home/${USER}
 
 USER ${USER}
 
-COPY .bashrc /home/${USER}/.bashrc
-
-ENV BASH_ENV=/home/${USER}/.bashrc
-
 SHELL ["bash", "-c"]
 
-RUN pkgx --version
+RUN curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
 WORKDIR /home/${USER}
+
+ENV PATH=${PATH}:/home/linuxbrew/.linuxbrew/bin
 
 ENTRYPOINT [ "code", "-v", "tunnel" ]
