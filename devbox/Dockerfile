@@ -14,7 +14,7 @@ RUN rm -f packages.microsoft.gpg
 RUN  apt-get install -y apt-transport-https \
   && apt-get update \
   && apt-get install -y \
-  code sudo direnv unzip git
+  code sudo direnv unzip
 
 ARG USER=coder
 ARG USER_ID=30033
@@ -41,6 +41,8 @@ RUN curl -fsSL https://get.jetpack.io/devbox | bash
 RUN devbox version
 
 RUN sudo chown -R ${USER}:${USER} /nix/store/.links /nix/var
+
+RUN sudo apt-get install -y git
 
 SHELL ["bash", "-c"]
 

@@ -14,7 +14,7 @@ RUN rm -f packages.microsoft.gpg
 RUN  apt-get install -y apt-transport-https \
   && apt-get update \
   && apt-get install -y \
-  code sudo unzip git
+  code sudo unzip
 
 RUN curl --proto =https --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux --extra-conf "sandbox = false" --init none --no-confirm
 ENV PATH=${PATH}:/nix/var/nix/profiles/default/bin
@@ -34,6 +34,8 @@ RUN mkdir -p /home/${USER} && chown -R ${USER}:${USER} /home/${USER}
 USER ${USER}
 
 RUN sudo chown -R ${USER}:${USER} /nix/store/.links /nix/var
+
+RUN sudo apt-get install -y git
 
 SHELL ["bash", "-c"]
 
