@@ -13,6 +13,9 @@ resource "docker_image" "base" {
   name = var.workspace_name
   build {
     context = var.context
+    build_arg = {
+      USER: var.user
+    }
   }
 }
 
