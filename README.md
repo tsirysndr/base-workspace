@@ -11,6 +11,22 @@ terraform init
 terraform apply
 ```
 
+A new Docker container will be created with the name `base-workspace` with [pkgx](https://pkgx.sh), [oh-my-posh](https://ohmyposh.dev/), [atuin](https://atuin.sh/) and vscode server installed.
+
+To connect to the environment, run:
+
+```bash
+docker logs base-workspace
+```
+
+and follow the vscode tunnel instructions.
+
+You can also enter to the environment using:
+
+```bash
+docker exec -it base-workspace bash
+```
+
 ## ✨ Bonus
 
 [oh-my-posh](https://ohmyposh.dev/) and [atuin](https://atuin.sh/) are already configured in the environment.
