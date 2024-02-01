@@ -19,11 +19,13 @@ resource "docker_image" "base" {
 resource "docker_container" "base" {
   image = docker_image.base.image_id
   name  = var.workspace_name
-
-  for_each = var.volumes
-  volumes {
-    volume_name    = each.key
-    container_path = each.value
-    read_only      = false
+  
+  dynamic "volumes" {
+    for_each = var.volumes
+    content {
+      volume_name    = volumes.key
+      container_path = volumes.value
+      read_only      = false
+    }
   }
 }
