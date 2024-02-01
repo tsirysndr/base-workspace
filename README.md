@@ -2,8 +2,7 @@
 
 This is my base workspace for all my projects. It contains a portable [docker](https://docker.com) environment with [vscode tunnels](https://code.visualstudio.com/docs/remote/tunnels) already configured, provisioned using [terraform](https://terraform.io).
 
-
-![Made with VHS](https://vhs.charm.sh/vhs-3Ky40PRpENNKeE6hwAN0JQ.gif)
+![Made with VHS](https://vhs.charm.sh/vhs-mfuUe2nAemQJ5Rl5rfinr.gif)
 
 ## 🚀 Usage
 
