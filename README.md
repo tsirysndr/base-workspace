@@ -35,13 +35,22 @@ docker exec -it base-workspace bash
 
 | Name   | Description                                          |
 |--------|------------------------------------------------------|
-| devbox  | A [devbox](https://github.com/jetpack-io/devbox) environment with vscode tunnels configured. |
-| devenv  | A [devenv](https://devenv.sh/) environment with vscode tunnels configured. |
-| flox    | A [flox](https://flox.dev/) environment with vscode tunnels configured.   |
-| hombrew | A [homebrew](https://brew.sh/) environment with vscode tunnels configured.   |
-| nix     | A [nix](https://nixos.org/) environment with vscode tunnels configured.    |
-| pkgx    | A [pkgx](https://pkgx.sh/) environment with vscode tunnels configured.   |
-| default | A base environment with vscode tunnels configured.   |
+| devbox  | [devbox](https://github.com/jetpack-io/devbox) environment with vscode tunnels configured. |
+| devenv  | [devenv](https://devenv.sh/) environment with vscode tunnels configured. |
+| flox    | [flox](https://flox.dev/) environment with vscode tunnels configured.   |
+| hombrew | [homebrew](https://brew.sh/) environment with vscode tunnels configured.   |
+| nix     | [nix](https://nixos.org/) environment with vscode tunnels configured.    |
+| pkgx    | [pkgx](https://pkgx.sh/) environment with vscode tunnels configured.   |
+| default | base environment with vscode tunnels configured.   |
+
+## ⚙️ Inputs
+
+| Name           | Description           |  Type           | Default         |
+|----------------|-----------------------|----------------|------------------|
+| workspace_name | Name of the workspace | `string`       | `base-workspace` |
+| user           | User to create        | `string`       | `coder`         |
+| context        | Context to use        | `string`       | `./pkgx`         |
+| volumes        | Volumes to mount      | `list(string)` | `{ base-workspace = "/home/coder" }`             |
 
 
 ## 📝 License

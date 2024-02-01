@@ -9,20 +9,21 @@ terraform {
 
 provider "docker" {}
 
-resource "docker_image" "pkgx" {
-  name = "base-workspace"
+resource "docker_image" "base" {
+  name = var.workspace_name
   build {
-    context = "./pkgx"
+    context = var.context
   }
 }
 
-resource "docker_container" "pkgx" {
-  image = docker_image.pkgx.image_id
-  name  = "base-workspace"
+resource "docker_container" "base" {
+  image = docker_image.base.image_id
+  name  = var.workspace_name
 
+  for_each = var.volumes
   volumes {
-    volume_name    = "base-workspace"
-    container_path = "/home/coder"
+    volume_name    = each.key
+    container_path = each.value
     read_only      = false
   }
 }
