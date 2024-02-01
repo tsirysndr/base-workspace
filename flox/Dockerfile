@@ -14,7 +14,7 @@ RUN rm -f packages.microsoft.gpg
 RUN  apt-get install -y apt-transport-https \
   && apt-get update \
   && apt-get install -y \
-  code sudo
+  code sudo direnv unzip
 
 RUN curl --proto =https --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux --extra-conf "sandbox = false" --init none --no-confirm
 ENV PATH=${PATH}:/nix/var/nix/profiles/default/bin
@@ -45,5 +45,15 @@ RUN echo 'extra-trusted-substituters = https://cache.floxdev.com' | sudo tee -a 
 RUN nix profile install --impure --experimental-features "nix-command flakes auto-allocate-uids" --accept-flake-config github:flox/floxpkgs#flox.fromCatalog
 
 WORKDIR /home/${USER}
+
+RUN sudo chown -R ${USER}:${USER} /usr/local
+
+RUN curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+
+RUN echo 'eval "$(oh-my-posh init bash)"' >> .bashrc
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
+
+ENV BASH_ENV=/home/${USER}/.bashrc
 
 ENTRYPOINT [ "code", "-v", "tunnel" ]

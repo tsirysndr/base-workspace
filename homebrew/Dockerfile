@@ -20,7 +20,7 @@ ARG USER=coder
 ARG USER_ID=30033
 ARG GROUP_ID=30033
 
-RUN apt-get install -y ruby git
+RUN apt-get install -y ruby git direnv unzip
 
 RUN addgroup --gid $GROUP_ID ${USER} \
   && useradd --groups sudo --no-create-home --shell /bin/bash ${USER} --uid ${USER_ID} --gid ${GROUP_ID} \
@@ -37,5 +37,15 @@ RUN curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.s
 WORKDIR /home/${USER}
 
 ENV PATH=${PATH}:/home/linuxbrew/.linuxbrew/bin
+
+RUN sudo chown -R ${USER}:${USER} /usr/local
+
+RUN curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+
+RUN echo 'eval "$(oh-my-posh init bash)"' >> .bashrc
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
+
+ENV BASH_ENV=/home/${USER}/.bashrc
 
 ENTRYPOINT [ "code", "-v", "tunnel" ]

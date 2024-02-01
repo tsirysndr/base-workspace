@@ -9,6 +9,10 @@ terraform init
 terraform apply
 ```
 
+## ✨ Bonus
+
+[oh-my-posh](https://ohmyposh.dev/) and [atuin](https://atuin.sh/) are already configured in the environment.
+
 ## 🐚 Environments
 
 | Name   | Description                                          |

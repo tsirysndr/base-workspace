@@ -22,7 +22,7 @@ ARG USER=coder
 ARG USER_ID=30033
 ARG GROUP_ID=30033
 
-RUN apt-get install -y sudo
+RUN apt-get install -y sudo unzip
 
 RUN addgroup --gid $GROUP_ID ${USER} \
   && useradd --groups sudo --no-create-home --shell /bin/bash ${USER} --uid ${USER_ID} --gid ${GROUP_ID} \
@@ -33,7 +33,9 @@ RUN mkdir -p /home/${USER} && chown -R ${USER}:${USER} /home/${USER}
 
 USER ${USER}
 
-COPY .bashrc /home/${USER}/.bashrc
+WORKDIR /home/${USER}
+
+RUN echo 'eval "$(pkgx --shellcode)"' >> .bashrc
 
 ENV BASH_ENV=/home/${USER}/.bashrc
 
@@ -41,6 +43,12 @@ SHELL ["bash", "-c"]
 
 RUN pkgx --version
 
-WORKDIR /home/${USER}
+RUN sudo chown -R ${USER}:${USER} /usr/local
+
+RUN curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+
+RUN echo 'eval "$(oh-my-posh init bash)"' >> .bashrc
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
 
 ENTRYPOINT [ "code", "-v", "tunnel" ]
