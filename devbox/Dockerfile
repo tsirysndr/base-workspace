@@ -14,7 +14,7 @@ RUN rm -f packages.microsoft.gpg
 RUN  apt-get install -y apt-transport-https \
   && apt-get update \
   && apt-get install -y \
-  code sudo direnv unzip
+  code sudo direnv unzip git
 
 ARG USER=coder
 ARG USER_ID=30033

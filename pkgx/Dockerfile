@@ -22,7 +22,7 @@ ARG USER=coder
 ARG USER_ID=30033
 ARG GROUP_ID=30033
 
-RUN apt-get install -y sudo unzip
+RUN apt-get install -y sudo unzip git
 
 RUN addgroup --gid $GROUP_ID ${USER} \
   && useradd --groups sudo --no-create-home --shell /bin/bash ${USER} --uid ${USER_ID} --gid ${GROUP_ID} \
