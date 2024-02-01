@@ -52,6 +52,67 @@ docker exec -it base-workspace bash
 | context        | Context to use        | `string`       | `./pkgx`         |
 | volumes        | Volumes to mount      | `map(string)` | `{ base-workspace = "/home/coder" }`             |
 
+## 📚 Examples
+
+devbox.tfvars
+
+```hcl
+workspace_name = "devbox-workspace"
+
+user = "coder"
+
+context = "./devbox"
+
+volumes = {
+  devbox-workspace = "/home/coder"
+  devbox-nix = "/nix"
+}
+```
+
+devenv.tfvars
+
+```hcl
+workspace_name = "devenv-workspace"
+
+user = "coder"
+
+context = "./devenv"
+
+volumes = {
+  devenv-workspace = "/home/coder"
+  devenv-nix = "/nix"
+}
+```
+
+flox.tfvars 
+
+```hcl
+workspace_name = "flox-workspace"
+
+user = "coder"
+
+context = "./flox"
+
+volumes = {
+  flox-workspace = "/home/coder"
+  flox-nix = "/nix"
+}
+```
+
+homebrew.tfvars
+
+```hcl
+workspace_name = "brew-workspace"
+
+user = "coder"
+
+context = "./homebrew"
+
+volumes = {
+  brew-workspace = "/home/coder"
+  linuxbrew = "/home/linuxbrew/.linuxbrew"
+}
+```
 
 ## 📝 License
 
