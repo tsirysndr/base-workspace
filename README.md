@@ -47,10 +47,11 @@ docker exec -it base-workspace bash
 
 | Name           | Description           |  Type           | Default         |
 |----------------|-----------------------|----------------|------------------|
-| workspace_name | Name of the workspace | `string`       | `base-workspace` |
-| user           | User to create        | `string`       | `coder`         |
 | context        | Context to use        | `string`       | `./pkgx`         |
+| packages       | Packages to install   | `list(string)` | `[]`             |
+| user           | User to create        | `string`       | `coder`         |
 | volumes        | Volumes to mount      | `map(string)` | `{ base-workspace = "/home/coder" }`             |
+| workspace_name | Name of the workspace | `string`       | `base-workspace` |
 
 ## 📚 Examples
 
@@ -104,6 +105,11 @@ homebrew.tfvars
 ```hcl
 workspace_name = "brew-workspace"
 
+packages = [
+  "jq",
+  "gh"
+]
+
 user = "coder"
 
 context = "./homebrew"
@@ -111,6 +117,25 @@ context = "./homebrew"
 volumes = {
   brew-workspace = "/home/coder"
   linuxbrew = "/home/linuxbrew/.linuxbrew"
+}
+```
+
+pkgx.tfvars
+
+```hcl
+workspace_name = "pkgx-workspace"
+
+packages = [
+  "jq",
+  "gh"
+]
+
+user = "coder"
+
+context = "./pkgx"
+
+volumes = {
+  pkgx-workspace = "/home/coder"
 }
 ```
 

@@ -48,4 +48,10 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
 
 ENV BASH_ENV=/home/${USER}/.bashrc
 
+ARG PACKAGES
+
+RUN if [ -n "$PACKAGES" ]; then \
+  brew install ${PACKAGES};\
+  fi
+
 ENTRYPOINT [ "code", "-v", "tunnel" ]
