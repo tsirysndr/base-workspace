@@ -9,8 +9,15 @@ terraform {
 
 provider "docker" {}
 
+resource "docker_image" "default" {
+  name = var.image
+   count = var.context != null ? 0 : 1
+}
+
 resource "docker_image" "base" {
   name = var.workspace_name
+  count = var.context != null ? 1 : 0
+
   build {
     context = var.context
     build_args = {
@@ -21,8 +28,9 @@ resource "docker_image" "base" {
 }
 
 resource "docker_container" "base" {
-  image = docker_image.base.image_id
+  image = var.context != null ? docker_image.base[0].image_id : docker_image.default[0].image_id
   name  = var.workspace_name
+  hostname = var.hostname
   
   dynamic "volumes" {
     for_each = var.volumes

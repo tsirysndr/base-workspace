@@ -4,6 +4,18 @@ variable "packages" {
   default = []
 }
 
+variable "hostname" {
+  type = string
+  description = "Hostname of the container"
+  default = null
+} 
+
+variable "image" {
+  type = string
+  description = "Image to use, required if context is not set"
+  default = "ghcr.io/pocketenv-io/pkgx:main"
+}
+
 variable "workspace_name" {
   type = string
   description = "Name of the workspace"
@@ -19,7 +31,7 @@ variable "user" {
 variable "context" {
   type = string
   description = "Context to use"
-  default = "./pkgx"
+  default = null
 }
 
 variable "volumes" {
