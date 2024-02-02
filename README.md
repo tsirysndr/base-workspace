@@ -47,8 +47,8 @@ docker exec -it base-workspace bash
 
 | Name           | Description           |  Type           | Default         |
 |----------------|-----------------------|----------------|------------------|
-| context        | Docker build context to use | `string`       | null         |
-| hostname       | Hostname to use       | `string`       |   null               |
+| context        | Docker build context to use | `string`       | `null`         |
+| hostname       | Hostname to use       | `string`       |   `null`               |
 | image          | Docker image to use, required if context is not set   | `string`       | `ghcr.io/pocketenv-io/pkgx:main` |
 | packages       | Packages to install   | `list(string)` | `[]`             |
 | user           | User to create        | `string`       | `coder`         |
