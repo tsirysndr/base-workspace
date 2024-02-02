@@ -47,7 +47,7 @@ docker exec -it base-workspace bash
 
 | Name           | Description           |  Type           | Default         |
 |----------------|-----------------------|----------------|------------------|
-| context        | Docker Build Context to use | `string`       | `./pkgx`         |
+| context        | Docker build context to use | `string`       | `./pkgx`         |
 | packages       | Packages to install   | `list(string)` | `[]`             |
 | user           | User to create        | `string`       | `coder`         |
 | volumes        | Volumes to mount      | `map(string)` | `{ base-workspace = "/home/coder" }`             |
