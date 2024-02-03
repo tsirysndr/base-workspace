@@ -55,6 +55,13 @@ docker exec -it base-workspace bash
 | volumes        | Volumes to mount      | `map(string)` | `{ base-workspace = "/home/coder" }`             |
 | workspace_name | Name of the workspace | `string`       | `base-workspace` |
 
+## 📦 Outputs
+
+| Name           | Description           |  Type          |
+|----------------|-----------------------|----------------|
+| container_id   | Docker container id   | `string`       |
+
+
 ## 📚 Examples
 
 devbox.tfvars
