@@ -4,9 +4,19 @@ This is my base workspace for all my projects. It contains a portable [docker](h
 
 ![Made with VHS](https://vhs.charm.sh/vhs-mfuUe2nAemQJ5Rl5rfinr.gif)
 
-## 🚀 Usage
+## 🚀 Quickstart
 
-```bash
+Create a new workspace using the [pocketenv](https://github.com/pocketenv-io/pocketenv) command line tool:
+
+```sh
+pocketenv init -t tsirysndr/base-workspace
+```
+
+Or using [terraform](https://terraform.io):
+
+```sh
+git clone https://github.com/tsirysndr/base-workspace.git
+cd base-workspace
 terraform init
 terraform apply
 ```
