@@ -10,6 +10,7 @@ Create a new workspace using the [pocketenv](https://github.com/pocketenv-io/poc
 
 ```sh
 pocketenv init -t tsirysndr/base-workspace
+pocketenv up
 ```
 
 Or using [terraform](https://terraform.io):
