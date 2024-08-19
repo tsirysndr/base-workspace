@@ -1,5 +1,7 @@
 # Base Workspace 🧑‍💻
 
+[![ci](https://github.com/tsirysndr/base-workspace/actions/workflows/ci.yml/badge.svg)](https://github.com/tsirysndr/base-workspace/actions/workflows/ci.yml)
+
 This is my base workspace for all my projects. It contains a portable [docker](https://docker.com) environment with [vscode tunnels](https://code.visualstudio.com/docs/remote/tunnels) already configured, provisioned using [terraform](https://terraform.io).
 
 ![Made with VHS](https://vhs.charm.sh/vhs-mfuUe2nAemQJ5Rl5rfinr.gif)
