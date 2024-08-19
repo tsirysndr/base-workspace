@@ -57,6 +57,10 @@ RUN echo 'eval "$(oh-my-posh init bash)"' >> .bashrc
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
 
+RUN curl -fsSL https://github.com/cashapp/hermit/releases/download/stable/install.sh | /bin/bash
+
+ENV PATH=${PATH}:/home/${USER}/bin
+
 ARG PACKAGES
 
 RUN if [ -n "$PACKAGES" ]; then \
