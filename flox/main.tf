@@ -19,6 +19,7 @@ resource "docker_image" "flox" {
 resource "docker_container" "flox" {
   image = docker_image.flox.image_id
   name  = "flox-workspace"
+  privileged = true
 
   volumes {
     volume_name    = "flox-workspace"

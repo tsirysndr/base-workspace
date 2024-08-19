@@ -31,6 +31,12 @@ RUN addgroup --gid $GROUP_ID ${USER} \
 
 RUN mkdir -p /home/${USER} && chown -R ${USER}:${USER} /home/${USER}
 
+ENV DOCKER_TLS_CERTDIR=/certs
+RUN mkdir /certs /certs/client && chmod 1777 /certs /certs/client
+COPY --from=docker:27-dind /usr/local/bin/ /usr/local/bin/
+COPY --from=docker:27-dind /usr/local/libexec/ /usr/local/libexec/
+VOLUME /var/lib/docker
+
 USER ${USER}
 
 WORKDIR /home/${USER}
@@ -57,4 +63,8 @@ RUN if [ -n "$PACKAGES" ]; then \
   pkgx install ${PACKAGES};\
   fi
 
-ENTRYPOINT [ "code", "-v", "tunnel" ]
+COPY entry.sh /usr/local/bin/entry.sh
+
+RUN sudo chmod a+x /usr/local/bin/entry.sh
+
+ENTRYPOINT [ "entry.sh" ]

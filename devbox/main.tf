@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     docker = {
-      source = "kreuzwerker/docker"
+      source  = "kreuzwerker/docker"
       version = "~> 3.0.2"
     }
   }
@@ -17,8 +17,9 @@ resource "docker_image" "devbox" {
 }
 
 resource "docker_container" "devbox" {
-  image = docker_image.devbox.image_id
-  name  = "devbox-workspace"
+  image      = docker_image.devbox.image_id
+  name       = "devbox-workspace"
+  privileged = true
 
   volumes {
     volume_name    = "devbox-workspace"
@@ -27,8 +28,8 @@ resource "docker_container" "devbox" {
   }
 
   volumes {
-    volume_name = "devbox-nix"
+    volume_name    = "devbox-nix"
     container_path = "/nix"
-    read_only = false
+    read_only      = false
   }
 }

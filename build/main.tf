@@ -19,6 +19,7 @@ resource "docker_image" "pkgx" {
 resource "docker_container" "pkgx" {
   image = docker_image.pkgx.image_id
   name  = "pkgx-workspace"
+  privileged = true
 
   volumes {
     volume_name    = "pkgx-workspace"

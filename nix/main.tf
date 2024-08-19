@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     docker = {
-      source = "kreuzwerker/docker"
+      source  = "kreuzwerker/docker"
       version = "~> 3.0.2"
     }
   }
@@ -17,8 +17,9 @@ resource "docker_image" "nix" {
 }
 
 resource "docker_container" "nix" {
-  image = docker_image.nix.image_id
-  name  = "nix-workspace"
+  image      = docker_image.nix.image_id
+  name       = "nix-workspace"
+  privileged = true
 
   volumes {
     volume_name    = "nix-workspace"
@@ -27,8 +28,8 @@ resource "docker_container" "nix" {
   }
 
   volumes {
-    volume_name = "nix-store"
+    volume_name    = "nix-store"
     container_path = "/nix"
-    read_only = false
+    read_only      = false
   }
 }

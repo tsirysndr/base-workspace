@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     docker = {
-      source = "kreuzwerker/docker"
+      source  = "kreuzwerker/docker"
       version = "~> 3.0.2"
     }
   }
@@ -17,8 +17,9 @@ resource "docker_image" "brew" {
 }
 
 resource "docker_container" "brew" {
-  image = docker_image.brew.image_id
-  name  = "brew-workspace"
+  image      = docker_image.brew.image_id
+  name       = "brew-workspace"
+  privileged = true
 
   volumes {
     volume_name    = "brew-workspace"
