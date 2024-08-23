@@ -39,7 +39,7 @@ RUN curl --proto =https --tlsv1.2 -sSf -L https://install.determinate.systems/ni
 ENV PATH=${PATH}:/nix/var/nix/profiles/default/bin
 RUN sudo sed -i 's/auto-allocate-uids = true/auto-allocate-uids = false/g' /etc/nix/nix.conf
 
-RUN sudo addgroup ${USER} nixbld
+RUN sudo usermod -a -G ${USER} nixbld
 
 ENV FORCE=1
 RUN curl -fsSL https://get.jetpack.io/devbox | bash
