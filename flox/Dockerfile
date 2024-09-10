@@ -14,7 +14,9 @@ RUN rm -f packages.microsoft.gpg
 RUN  apt-get install -y apt-transport-https \
   && apt-get update \
   && apt-get install -y \
-  code sudo direnv unzip
+  code sudo direnv unzip locales
+
+RUN locale-gen en_US.UTF-8
 
 RUN curl --proto =https --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux --extra-conf "sandbox = false" --init none --no-confirm
 ENV PATH=${PATH}:/nix/var/nix/profiles/default/bin

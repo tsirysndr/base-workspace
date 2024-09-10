@@ -14,7 +14,9 @@ RUN rm -f packages.microsoft.gpg
 RUN  apt-get install -y apt-transport-https \
   && apt-get update \
   && apt-get install -y \
-  code sudo
+  code sudo locales
+
+RUN locale-gen en_US.UTF-8
 
 ARG USER=coder
 ARG USER_ID=30033
